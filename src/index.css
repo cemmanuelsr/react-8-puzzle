@@ -1,5 +1,13 @@
+html, body {
+  overflow: auto;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
+  height: 100vh;
+  background: rgb(56,252,68);
+  background: linear-gradient(0deg, rgba(4,252,68,1) 0%, rgba(56,252,68,1) 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

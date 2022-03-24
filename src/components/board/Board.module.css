@@ -1,0 +1,18 @@
+.board {
+    border-radius: 25px;
+    background: #04fc1c;
+    margin: 0 auto;
+    width: 350px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 33.3%;
+    width: 100%;
+}

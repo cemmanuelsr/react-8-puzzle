@@ -1,0 +1,23 @@
+.tile {
+    border-radius: 15px;
+    background: white;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #04f01c;
+}
+
+.zero {
+    border-radius: 15px;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
