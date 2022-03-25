@@ -29,6 +29,29 @@ const get_coords = (matrix, number) => {
   }
 }
 
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function solve(table, walk_tiles, zero_row, zero_col, setTable, setRow, setCol) {
+  for(let i = 1; i < walk_tiles.length; i++) {
+    let tile = walk_tiles[i];
+    let [tile_row, tile_col] = get_coords(table, tile);
+
+    let aux = table[zero_row][zero_col];
+    table[zero_row][zero_col] = table[tile_row][tile_col];
+    table[tile_row][tile_col] = aux;
+
+    zero_row = tile_row;
+    zero_col = tile_col;
+
+    setRow(zero_row);
+    setCol(zero_col);
+    setTable(table);
+    await sleep(1000);
+  }
+}
+
 const Button = (props) => {
 
   const [running, setRunning] = useState(false);
@@ -47,23 +70,23 @@ const Button = (props) => {
         let zero_row = props.zeroRow;
         let zero_col = props.zeroCol;
 
-        for(let i = 1; i < walk_tiles.length; i++) {
-          let tile = walk_tiles[i];
-          let [tile_row, tile_col] = get_coords(props.table, tile);
+//        for(let i = 1; i < walk_tiles.length; i++) {
+//          let tile = walk_tiles[i];
+//          let [tile_row, tile_col] = get_coords(props.table, tile);
+//
+//          let aux = props.table[zero_row][zero_col];
+//          props.table[zero_row][zero_col] = props.table[tile_row][tile_col];
+//          props.table[tile_row][tile_col] = aux;
+//
+//          zero_row = tile_row;
+//          zero_col = tile_col;
+//
+//          props.setRow(zero_row);
+//          props.setCol(zero_col);
+//          props.setTable(props.table);
+//        }
 
-          let aux = props.table[zero_row][zero_col];
-          props.table[zero_row][zero_col] = props.table[tile_row][tile_col];
-          props.table[tile_row][tile_col] = aux;
-
-          zero_row = tile_row;
-          zero_col = tile_col;
-
-          props.setRow(zero_row);
-          props.setCol(zero_col);
-          props.setTable(props.table);
-        }
-
-        console.log(props.table);
+        solve(props.table, walk_tiles, zero_row, zero_col, props.setTable, props.setRow, props.setCol);
 
         setRunning(false);
       });
