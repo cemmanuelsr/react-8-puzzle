@@ -19,6 +19,16 @@ const flat_matrix = (matrix) => {
   return flatten;
 }
 
+const get_coords = (matrix, number) => {
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix.length; col++) {
+      if(matrix[row][col] == number) {
+        return [row, col];
+      }
+    }
+  }
+}
+
 const Button = (props) => {
 
   const [running, setRunning] = useState(false);
@@ -26,14 +36,38 @@ const Button = (props) => {
   const handleClick = (event) => {
     event.preventDefault();
     if (!running) {
+      setRunning(true);
       const flatten_table = flat_matrix(props.table);
       axios.get('https://cthl98.deta.dev/solve/BuscaGananciosa/EuclidianBetter', {
         params: { table: flatten_table }
       }).then((response) => {
-        console.log(response);
-      })
-    }
-    setRunning(!running);
+        const data = response.data;
+        const path = data.path;
+        const walk_tiles = path.split(' ; 0 <--> ');
+        let zero_row = props.zeroRow;
+        let zero_col = props.zeroCol;
+
+        for(let i = 1; i < walk_tiles.length; i++) {
+          let tile = walk_tiles[i];
+          let [tile_row, tile_col] = get_coords(props.table, tile);
+
+          let aux = props.table[zero_row][zero_col];
+          props.table[zero_row][zero_col] = props.table[tile_row][tile_col];
+          props.table[tile_row][tile_col] = aux;
+
+          zero_row = tile_row;
+          zero_col = tile_col;
+
+          props.setRow(zero_row);
+          props.setCol(zero_col);
+          props.setTable(props.table);
+        }
+
+        console.log(props.table);
+
+        setRunning(false);
+      });
+    };
   }
 
   return (

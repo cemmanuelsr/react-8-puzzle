@@ -6,55 +6,51 @@ import Tile from '../tile/Tile';
 
 const Board = (props) => {
 
-  const [zeroRow, setZeroRow] = useState(1);
-  const [zeroCol, setZeroCol] = useState(1);
-
   const handleKey = (event) => {
     event.preventDefault();
 
-    if (event.key == 'ArrowUp' && zeroRow > 0) {
-      const newRow = zeroRow - 1;
-      const aux = props.table[zeroRow][zeroCol];
-      props.table[zeroRow][zeroCol] = props.table[newRow][zeroCol];
-      props.table[newRow][zeroCol] = aux;
-      setZeroRow(newRow);
+    if (event.key == 'ArrowUp' && props.zeroRow > 0) {
+      const newRow = props.zeroRow - 1;
+      const aux = props.table[props.zeroRow][props.zeroCol];
+      props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
+      props.table[newRow][props.zeroCol] = aux;
+      props.setRow(newRow);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowDown' && zeroRow < 2) {
-      const newRow = zeroRow + 1;
-      const aux = props.table[zeroRow][zeroCol];
-      props.table[zeroRow][zeroCol] = props.table[newRow][zeroCol];
-      props.table[newRow][zeroCol] = aux;
-      setZeroRow(newRow);
+    if (event.key == 'ArrowDown' && props.zeroRow < 2) {
+      const newRow = props.zeroRow + 1;
+      const aux = props.table[props.zeroRow][props.zeroCol];
+      props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
+      props.table[newRow][props.zeroCol] = aux;
+      props.setRow(newRow);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowRight' && zeroCol < 2) {
-      const newCol = zeroCol + 1;
-      const aux = props.table[zeroRow][zeroCol];
-      props.table[zeroRow][zeroCol] = props.table[zeroRow][newCol];
-      props.table[zeroRow][newCol] = aux;
-      setZeroCol(newCol);
+    if (event.key == 'ArrowRight' && props.zeroCol < 2) {
+      const newCol = props.zeroCol + 1;
+      const aux = props.table[props.zeroRow][props.zeroCol];
+      props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];
+      props.table[props.zeroRow][newCol] = aux;
+      props.setCol(newCol);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowLeft' && zeroCol > 0) {
-      const newCol = zeroCol - 1;
-      const aux = props.table[zeroRow][zeroCol];
-      props.table[zeroRow][zeroCol] = props.table[zeroRow][newCol];
-      props.table[zeroRow][newCol] = aux;
-      setZeroCol(newCol);
+    if (event.key == 'ArrowLeft' && props.zeroCol > 0) {
+      const newCol = props.zeroCol - 1;
+      const aux = props.table[props.zeroRow][props.zeroCol];
+      props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];
+      props.table[props.zeroRow][newCol] = aux;
+      props.setCol(newCol);
       props.setTable(props.table);
     }
-    console.log(props.table);
   };
 
   return (
     <div className={styled.board} tabIndex="0" onKeyDown={(e) => handleKey(e)}>
       {props.table.map((row) => {
         return (
-          <div className={styled.row}>
+          <div className={styled.row} key={row[0]}>
             {row.map((tile) => {
               return (
-                <Tile value={tile} />
+                <Tile value={tile} key={tile} />
               )
             }
             )}
