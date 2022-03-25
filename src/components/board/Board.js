@@ -9,7 +9,7 @@ const Board = (props) => {
   const handleKey = (event) => {
     event.preventDefault();
 
-    if (event.key == 'ArrowUp' && props.zeroRow > 0) {
+    if ((event.key == 'ArrowUp' || event.key == 'w') && props.zeroRow > 0) {
       const newRow = props.zeroRow - 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
@@ -17,7 +17,7 @@ const Board = (props) => {
       props.setRow(newRow);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowDown' && props.zeroRow < 2) {
+    if ((event.key == 'ArrowDown' || event.key == 's') && props.zeroRow < 2) {
       const newRow = props.zeroRow + 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
@@ -25,7 +25,7 @@ const Board = (props) => {
       props.setRow(newRow);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowRight' && props.zeroCol < 2) {
+    if ((event.key == 'ArrowRight' || event.key == 'd') && props.zeroCol < 2) {
       const newCol = props.zeroCol + 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];
@@ -33,7 +33,7 @@ const Board = (props) => {
       props.setCol(newCol);
       props.setTable(props.table);
     }
-    if (event.key == 'ArrowLeft' && props.zeroCol > 0) {
+    if ((event.key == 'ArrowLeft' || event.key == 'a') && props.zeroCol > 0) {
       const newCol = props.zeroCol - 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];

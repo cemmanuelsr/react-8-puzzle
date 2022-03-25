@@ -3,6 +3,7 @@ import './App.css';
 
 import Board from './components/board/Board';
 import Button from './components/button/Button';
+import Footer from './components/footer/Footer';
 
 
 function App() {
@@ -13,8 +14,10 @@ function App() {
   return (
     <div className="App" >
       <h1 className="title">8 Puzzle</h1>
+      <p className="description">8 puzzle solver using A* Algorithm (click on table and control with WASD or Keys)</p>
       <Board table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} />
       <Button icon={'play'} table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} />
+      <Footer />
     </div>
   );
 }

@@ -6,7 +6,17 @@
 }
 
 .title {
-    margin: 4rem 0;
-    color: white;
-    font-size: 4rem;
+    margin: 2rem auto;
+    color: #F1FAEE;
+    font-size: 3rem;
+}
+
+.description {
+  color: #F1FAEE;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #F1FAEE;
 }

@@ -1,6 +1,6 @@
 .tile {
     border-radius: 15px;
-    background: white;
+    background: #F1FAEE;
     padding: 15px;
     width: 60px;
     height: 60px;
@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: #04f01c;
+    color: #457B9D;
 }
 
 .zero {

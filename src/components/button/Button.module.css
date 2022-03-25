@@ -11,12 +11,12 @@
   height: 75px;
   border-radius: 50%;
   outline: none;
-  background: #04fc1c;
+  background: #457B9D;
   border: 0;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: white;
+  color: #F1FAEE;
 }
