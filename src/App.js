@@ -10,13 +10,16 @@ function App() {
   const [table, setTable] = useState([[1, 2, 3], [8, 0, 4], [7, 6, 5]]);
   const [zeroRow, setZeroRow] = useState(1);
   const [zeroCol, setZeroCol] = useState(1);
+  const [showTime, setShowTime] = useState(false);
+  const [timeMsg, setTimeMsg] = useState('');
 
   return (
     <div className="App" >
       <h1 className="title">8 Puzzle</h1>
       <p className="description">8 puzzle solver using A* Algorithm (click on table and control with WASD or Keys)</p>
-      <Board table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} />
-      <Button icon={'play'} table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} />
+      <Board table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} setTime={setShowTime} />
+      {showTime && <p className="description">{timeMsg}</p>}
+      <Button icon={'play'} table={table} setTable={setTable} zeroRow={zeroRow} zeroCol={zeroCol} setRow={setZeroRow} setCol={setZeroCol} setMsg={setTimeMsg} setTime={setShowTime} />
       <Footer />
     </div>
   );

@@ -22,7 +22,7 @@ const flat_matrix = (matrix) => {
 const get_coords = (matrix, number) => {
   for (let row = 0; row < matrix.length; row++) {
     for (let col = 0; col < matrix.length; col++) {
-      if(matrix[row][col] == number) {
+      if (matrix[row][col] == number) {
         return [row, col];
       }
     }
@@ -30,11 +30,11 @@ const get_coords = (matrix, number) => {
 }
 
 const sleep = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function solve(table, walk_tiles, zero_row, zero_col, setTable, setRow, setCol) {
-  for(let i = 1; i < walk_tiles.length; i++) {
+  for (let i = 1; i < walk_tiles.length; i++) {
     let tile = walk_tiles[i];
     let [tile_row, tile_col] = get_coords(table, tile);
 
@@ -65,26 +65,28 @@ const Button = (props) => {
         params: { table: flatten_table }
       }).then((response) => {
         const data = response.data;
+        props.setMsg(`Solved in ${data.time} seconds`);
+        props.setTime(true);
         const path = data.path;
         const walk_tiles = path.split(' ; 0 <--> ');
         let zero_row = props.zeroRow;
         let zero_col = props.zeroCol;
 
-//        for(let i = 1; i < walk_tiles.length; i++) {
-//          let tile = walk_tiles[i];
-//          let [tile_row, tile_col] = get_coords(props.table, tile);
-//
-//          let aux = props.table[zero_row][zero_col];
-//          props.table[zero_row][zero_col] = props.table[tile_row][tile_col];
-//          props.table[tile_row][tile_col] = aux;
-//
-//          zero_row = tile_row;
-//          zero_col = tile_col;
-//
-//          props.setRow(zero_row);
-//          props.setCol(zero_col);
-//          props.setTable(props.table);
-//        }
+        //        for(let i = 1; i < walk_tiles.length; i++) {
+        //          let tile = walk_tiles[i];
+        //          let [tile_row, tile_col] = get_coords(props.table, tile);
+        //
+        //          let aux = props.table[zero_row][zero_col];
+        //          props.table[zero_row][zero_col] = props.table[tile_row][tile_col];
+        //          props.table[tile_row][tile_col] = aux;
+        //
+        //          zero_row = tile_row;
+        //          zero_col = tile_col;
+        //
+        //          props.setRow(zero_row);
+        //          props.setCol(zero_col);
+        //          props.setTable(props.table);
+        //        }
 
         solve(props.table, walk_tiles, zero_row, zero_col, props.setTable, props.setRow, props.setCol);
 

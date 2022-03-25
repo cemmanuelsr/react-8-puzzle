@@ -10,6 +10,7 @@ const Board = (props) => {
     event.preventDefault();
 
     if ((event.key == 'ArrowUp' || event.key == 'w') && props.zeroRow > 0) {
+      props.setTime(false);
       const newRow = props.zeroRow - 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
@@ -18,6 +19,7 @@ const Board = (props) => {
       props.setTable(props.table);
     }
     if ((event.key == 'ArrowDown' || event.key == 's') && props.zeroRow < 2) {
+      props.setTime(false);
       const newRow = props.zeroRow + 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[newRow][props.zeroCol];
@@ -26,6 +28,7 @@ const Board = (props) => {
       props.setTable(props.table);
     }
     if ((event.key == 'ArrowRight' || event.key == 'd') && props.zeroCol < 2) {
+      props.setTime(false);
       const newCol = props.zeroCol + 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];
@@ -34,6 +37,7 @@ const Board = (props) => {
       props.setTable(props.table);
     }
     if ((event.key == 'ArrowLeft' || event.key == 'a') && props.zeroCol > 0) {
+      props.setTime(false);
       const newCol = props.zeroCol - 1;
       const aux = props.table[props.zeroRow][props.zeroCol];
       props.table[props.zeroRow][props.zeroCol] = props.table[props.zeroRow][newCol];
