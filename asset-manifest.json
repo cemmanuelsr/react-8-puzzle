@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-8-puzzle/static/css/main.14360057.css",
+    "main.js": "/react-8-puzzle/static/js/main.e317401d.js",
+    "static/js/787.3d1a8862.chunk.js": "/react-8-puzzle/static/js/787.3d1a8862.chunk.js",
+    "index.html": "/react-8-puzzle/index.html",
+    "main.14360057.css.map": "/react-8-puzzle/static/css/main.14360057.css.map",
+    "main.e317401d.js.map": "/react-8-puzzle/static/js/main.e317401d.js.map",
+    "787.3d1a8862.chunk.js.map": "/react-8-puzzle/static/js/787.3d1a8862.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.14360057.css",
+    "static/js/main.e317401d.js"
+  ]
+}
